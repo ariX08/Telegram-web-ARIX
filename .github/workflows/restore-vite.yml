@@ -1,0 +1,28 @@
+name: Restore vite
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/trigger-vite-restore'
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore vite from good commit
+        run: |
+          git show ac7958c709915e964ab1de5bf85362300f808b9e:vite.config.ts > vite.config.ts
+          sed -i "s/a custom Telegram Web client/a custom messaging client/g" vite.config.ts
+          grep -n "title\|description\|Telegram\|KuchuGRAM" vite.config.ts | head -20 || true
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add vite.config.ts
+          git diff --staged --quiet && exit 0
+          git commit -m "Restore vite.config.ts with KuchuGRAM branding"
+          git push
