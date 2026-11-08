@@ -26,16 +26,16 @@ const App = {
   domains: MAIN_DOMAINS,
   baseDcId: BASE_DC_ID as TrueDcId,
   isMainDomain: MAIN_DOMAINS.includes(location.hostname),
-  suffix: 'K',
+  suffix: '',
   threads,
   lottieWorkers: threads,
   cryptoWorkers: threads,
-  interclientBroadcastChannel: 'tgweb'
+  interclientBroadcastChannel: 'kuchugram'
 };
 
-// * "Telegram WebK 2.2 (681)" - how the app names itself, in the main menu and under Settings
+// How the app names itself in the main menu and under Settings
 export function getAppVersionText() {
-  return `Telegram Web${App.suffix} ${App.version} (${App.build})`;
+  return `KuchuGRAM ${App.version} (${App.build})`;
 }
 
 if(App.isMainDomain) { // use Webogram credentials then
