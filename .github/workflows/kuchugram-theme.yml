@@ -1,0 +1,68 @@
+name: KuchuGRAM theme palette
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/trigger-kuchugram-theme'
+jobs:
+  theme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply violet brand colors
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          p = Path('src/helpers/themeController.ts')
+          s = p.read_text()
+          replacements = [
+            ("'primary-color': '#3390ec'", "'primary-color': '#7C5CFC'"),
+            ("'message-out-primary-color': '#5CA853'", "'message-out-primary-color': '#9B7EFA'"),
+            ("'saved-color': '#359AD4'", "'saved-color': '#7C5CFC'"),
+            ("'background-color': '#f4f4f5'", "'background-color': '#f3f1f8'"),
+            ("'border-color': '#dfe1e5'", "'border-color': '#e4e0ef'"),
+            ("'secondary-color': '#c4c9cc'", "'secondary-color': '#c4c0d4'"),
+            ("'primary-color': '#8774E1'", "'primary-color': '#A78BFA'"),
+            ("'message-out-primary-color': '#8774E1'", "'message-out-primary-color': '#A78BFA'"),
+            ("'message-background-color': '#212121'", "'message-background-color': '#1c1a24'"),
+            ("'surface-color': '#212121'", "'surface-color': '#1c1a24'"),
+            ("'saved-color': '#8774E1'", "'saved-color': '#A78BFA'"),
+            ("'background-color': '#181818'", "'background-color': '#121018'"),
+            ("'body-background-color': '#181818'", "'body-background-color': '#121018'"),
+            ("'border-color': '#0f0f0f'", "'border-color': '#0c0b10'"),
+            ("'input-search-background-color': '#181818'", "'input-search-background-color': '#121018'"),
+            ("'primary-color': '#3685FA'", "'primary-color': '#8B7CF8'"),
+            ("'message-out-primary-color': '#3685FA'", "'message-out-primary-color': '#8B7CF8'"),
+            ("'message-background-color': '#232E3B'", "'message-background-color': '#252038'"),
+            ("'surface-color': '#1D2733'", "'surface-color': '#1e1a2e'"),
+            ("'saved-color': '#3685FA'", "'saved-color': '#8B7CF8'"),
+            ("'background-color': '#151E27'", "'background-color': '#14111f'"),
+            ("'body-background-color': '#151E27'", "'body-background-color': '#14111f'"),
+            ("'border-color': '#0F151B'", "'border-color': '#0e0c16'"),
+            ("'input-search-background-color': '#212D3B'", "'input-search-background-color': '#1e1a2e'"),
+            ("'primary-color': '#2D7ED5'", "'primary-color': '#6D5AE6'"),
+            ("'message-out-primary-color': '#2D7ED5'", "'message-out-primary-color': '#6D5AE6'"),
+            ("'message-background-color': '#F0F0F0'", "'message-background-color': '#F3F0FA'"),
+            ("'saved-color': '#2D7ED5'", "'saved-color': '#6D5AE6'"),
+            ("'background-color': '#F4F4F5'", "'background-color': '#f5f3fb'"),
+            ("'border-color': '#DFE1E5'", "'border-color': '#e4e0ef'"),
+            ("'secondary-color': '#C4C9CC'", "'secondary-color': '#c4c0d4'"),
+          ]
+          for a,b in replacements:
+            if a in s:
+              s = s.replace(a, b, 1)
+              print('ok', a, '->', b)
+            else:
+              print('skip', a)
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/helpers/themeController.ts
+          git diff --staged --quiet && exit 0
+          git commit -m "KuchuGRAM violet brand palette in themeController"
+          git push
