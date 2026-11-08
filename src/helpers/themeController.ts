@@ -111,38 +111,38 @@ const colorMap: {
   }
 } = {
   day: {
-    'primary-color': '#3390ec',
-    'message-out-primary-color': '#5CA853',
+    'primary-color': '#7C5CFC',
+    'message-out-primary-color': '#9B7EFA',
     'message-background-color': '#ffffff',
     'surface-color': '#ffffff',
     'danger-color': '#df3f40',
     'primary-text-color': '#000000',
     'secondary-text-color': '#707579',
-    'saved-color': '#359AD4',
+    'saved-color': '#7C5CFC',
     'green-color': '#70b768',
     // SCSS-side defaults migrated from base.scss :root
-    'background-color': '#f4f4f5',
+    'background-color': '#f3f1f8',
     'body-background-color': '#ffffff',
-    'border-color': '#dfe1e5',
-    'secondary-color': '#c4c9cc',
+    'border-color': '#e4e0ef',
+    'secondary-color': '#c4c0d4',
     'input-search-background-color': '#ffffff'
   },
   night: {
-    'primary-color': '#8774E1',
-    'message-out-primary-color': '#8774E1',
-    'message-background-color': '#212121',
-    'surface-color': '#212121',
+    'primary-color': '#A78BFA',
+    'message-out-primary-color': '#A78BFA',
+    'message-background-color': '#1c1a24',
+    'surface-color': '#1c1a24',
     'danger-color': '#ff595a',
     'primary-text-color': '#ffffff',
     'secondary-text-color': '#aaaaaa',
-    'saved-color': '#8774E1',
+    'saved-color': '#A78BFA',
     'green-color': '#5CC85E',
     // SCSS-side defaults migrated from base.scss .night
-    'background-color': '#181818',
-    'body-background-color': '#181818',
-    'border-color': '#0f0f0f',
+    'background-color': '#121018',
+    'body-background-color': '#121018',
+    'border-color': '#0c0b10',
     'secondary-color': '#707579',
-    'input-search-background-color': '#181818'
+    'input-search-background-color': '#121018'
   },
   tinted: {
     // base colors ported from Telegram-Android darkblue.attheme (Dark Blue / Tinted)
@@ -150,40 +150,40 @@ const colorMap: {
     // secondary-text ← windowBackgroundWhiteGrayText, green ← windowBackgroundWhiteGreenText2.
     // Accent #3685FA — Theme.java::loadDefaultThemes(): Dark Blue's "home" ThemeAccent ID 0
     // (sortAccents puts isHome first, isHome for Dark Blue = id 0; that accent is at array index 8 of Dark Blue's accentColor[]).
-    'primary-color': '#3685FA',
-    'message-out-primary-color': '#3685FA',
-    'message-background-color': '#232E3B',
-    'surface-color': '#1D2733',
+    'primary-color': '#8B7CF8',
+    'message-out-primary-color': '#8B7CF8',
+    'message-background-color': '#252038',
+    'surface-color': '#1e1a2e',
     'danger-color': '#FF595A',
     'primary-text-color': '#FFFFFF',
     'secondary-text-color': '#7D8B99',
-    'saved-color': '#3685FA',
+    'saved-color': '#8B7CF8',
     'green-color': '#61D36B',
     // background / body-bg ← windowBackgroundGray, border ← divider (alpha-stripped),
     // input-search-bg ← chat_messagePanelBackground
-    'background-color': '#151E27',
-    'body-background-color': '#151E27',
-    'border-color': '#0F151B',
+    'background-color': '#14111f',
+    'body-background-color': '#14111f',
+    'border-color': '#0e0c16',
     'secondary-color': '#7D8B99',
-    'input-search-background-color': '#212D3B'
+    'input-search-background-color': '#1e1a2e'
   },
   light: {
     // base colors ported from Telegram-Android day.attheme (Android's "Day" / baseThemeDay)
     // Distinct from tweb's existing `day` theme (which maps to baseThemeClassic with green outgoing bubbles)
     // primary ← chat_outBubble (#2D7ED5 — signature Day blue, replaces day's green out-message).
-    'primary-color': '#2D7ED5',
-    'message-out-primary-color': '#2D7ED5',
-    'message-background-color': '#F0F0F0', // chat_inBubble — light gray (vs day's pure white)
+    'primary-color': '#6D5AE6',
+    'message-out-primary-color': '#6D5AE6',
+    'message-background-color': '#F3F0FA', // chat_inBubble — light gray (vs day's pure white)
     'surface-color': '#FFFFFF',
     'danger-color': '#DF3F40',
     'primary-text-color': '#333333', // windowBackgroundWhiteBlackText
     'secondary-text-color': '#8C8E91', // windowBackgroundWhiteGrayText
-    'saved-color': '#2D7ED5',
+    'saved-color': '#6D5AE6',
     'green-color': '#04AC35', // windowBackgroundWhiteGreenText2
-    'background-color': '#F4F4F5',
+    'background-color': '#f5f3fb',
     'body-background-color': '#FFFFFF',
-    'border-color': '#DFE1E5',
-    'secondary-color': '#C4C9CC',
+    'border-color': '#e4e0ef',
+    'secondary-color': '#c4c0d4',
     'input-search-background-color': '#FFFFFF'
   }
 };
