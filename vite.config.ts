@@ -68,10 +68,10 @@ if(isDEV) {
 
 const handlebarsPlugin = handlebars({
   context: {
-    title: 'Telegram Web',
-    description: 'Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.',
-    url: 'https://web.telegram.org/k/',
-    origin: 'https://web.telegram.org/'
+    title: 'KuchuGRAM',
+    description: 'KuchuGRAM — a custom Telegram Web client focused on speed and security.',
+    url: 'https://kuchugram.vercel.app/',
+    origin: 'https://kuchugram.vercel.app/'
   }
 });
 
@@ -240,13 +240,7 @@ function preloadHelperCssWaitPlugin(): Plugin {
       }
 
       return {
-        code: code.replace(waitRe, '__waitForPreloadedCss(link, dep)') + `
-function __waitForPreloadedCss(link, dep) {
-  return new Promise((res, rej) => {
-    link.addEventListener("load", res);
-    link.addEventListener("error", () => rej(new Error(\`Unable to preload CSS for \${dep}\`)));
-  });
-}`,
+        code: code.replace(waitRe, '__waitForPreloadedCss(link, dep)') + `\nfunction __waitForPreloadedCss(link, dep) {\n  return new Promise((res, rej) => {\n    link.addEventListener(\"load\", res);\n    link.addEventListener(\"error\", () => rej(new Error(\\`Unable to preload CSS for \\${dep}\\`)));\n  });\n}`,
         map: null
       };
     }
