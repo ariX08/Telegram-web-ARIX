@@ -1,0 +1,35 @@
+name: Rebrand to KuchuGRAM
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/trigger-rebrand'
+
+jobs:
+  rebrand:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace Telegram with KuchuGRAM in lang.ts
+        run: |
+          if grep -q Telegram src/lang.ts 2>/dev/null; then
+            sed -i "s/Telegram's/KuchuGRAM's/g; s/Telegram/KuchuGRAM/g" src/lang.ts
+            echo "KuchuGRAM count: $(grep -c KuchuGRAM src/lang.ts || true)"
+            echo "Telegram left: $(grep -c Telegram src/lang.ts || true)"
+          else
+            echo "Already rebranded or file missing"
+            exit 0
+          fi
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/lang.ts
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "KuchuGRAM everywhere: replace all Telegram in lang.ts"
+          git push
