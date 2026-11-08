@@ -9,7 +9,7 @@
     "start-in-docker": "vite --host",
     "serve": "pnpm run build && node server.js --dist",
     "build": "pnpm test --run && pnpm run typecheck && pnpm run generate-changelog && vite build && pnpm run check-bundle",
-    "build:vercel": "vite build",
+    "build:vercel": "vite build && node -e \"const fs=require('fs');const path=require('path');function cp(s,d){fs.mkdirSync(d,{recursive:true});for(const e of fs.readdirSync(s,{withFileTypes:true})){const sp=path.join(s,e.name),dp=path.join(d,e.name);if(e.isDirectory())cp(sp,dp);else fs.copyFileSync(sp,dp);}}cp('public/assets','dist/assets');for(const f of ['site.webmanifest','browserconfig.xml','site_apple.webmanifest']){const p='public/'+f;if(fs.existsSync(p))fs.copyFileSync(p,'dist/'+f);}\"",
     "check-bundle": "node scripts/check-bundle-mangling.mjs dist",
     "test": "vitest",
     "test:a11y": "playwright test --config playwright.a11y.config.ts",
