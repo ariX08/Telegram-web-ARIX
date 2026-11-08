@@ -1,0 +1,33 @@
+// KuchuGRAM — originality layer (accent colors come from themeController colorMap)
+
+// Slightly more open chatlist rows
+.chatlist-chat {
+  .row-title {
+    letter-spacing: -0.01em;
+  }
+}
+
+// Active chatlist emphasis
+.chatlist-chat.active {
+  .row-title {
+    font-weight: 600;
+  }
+}
+
+// Bubble corners a touch softer (on top of variable radius)
+.bubble {
+  --bubble-border-radius: 18px;
+}
+
+// Composer: calm focus when vars are available
+.chat-input {
+  .input-message-input:focus {
+    outline: none;
+  }
+}
+
+// Primary CTAs: slightly stronger type
+.btn-primary {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
